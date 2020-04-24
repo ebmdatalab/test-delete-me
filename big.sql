@@ -11462,7 +11462,8 @@ SELECT * INTO #population FROM (
 
 
 -- Query for icu
-SELECT * INTO #icu FROM (
+
+                    SELECT t.* INTO #icu FROM (
             SELECT
               Patient_ID AS patient_id,
               1 AS admitted,
@@ -11493,47 +11494,62 @@ SELECT * INTO #icu FROM (
           OriginalIcuAdmissionDate
         END >= '2020-02-01'
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for died_date_cpns
-SELECT * INTO #died_date_cpns FROM (
+
+                    SELECT t.* INTO #died_date_cpns FROM (
             SELECT Patient_ID as patient_id, CONVERT(VARCHAR(10), DateOfDeath, 23) AS date_of_death
             FROM CPNS
             WHERE DateOfDeath <= '2020-06-01'
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for died_ons_covid_flag_any
-SELECT * INTO #died_ons_covid_flag_any FROM (
+
+                    SELECT t.* INTO #died_ons_covid_flag_any FROM (
             SELECT Patient_ID as patient_id, 1 AS died
             FROM ONS_Deaths
             WHERE (icd10u IN ('U071','U072') OR ICD10001 IN ('U071','U072') OR ICD10002 IN ('U071','U072') OR ICD10003 IN ('U071','U072') OR ICD10004 IN ('U071','U072') OR ICD10005 IN ('U071','U072') OR ICD10006 IN ('U071','U072') OR ICD10007 IN ('U071','U072') OR ICD10008 IN ('U071','U072') OR ICD10009 IN ('U071','U072') OR ICD10010 IN ('U071','U072') OR ICD10011 IN ('U071','U072') OR ICD10012 IN ('U071','U072') OR ICD10013 IN ('U071','U072') OR ICD10014 IN ('U071','U072') OR ICD10015 IN ('U071','U072')) AND dod <= '2020-06-01'
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for died_ons_covid_flag_underlying
-SELECT * INTO #died_ons_covid_flag_underlying FROM (
+
+                    SELECT t.* INTO #died_ons_covid_flag_underlying FROM (
             SELECT Patient_ID as patient_id, 1 AS died
             FROM ONS_Deaths
             WHERE (icd10u IN ('U071','U072')) AND dod <= '2020-06-01'
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for died_date_ons
-SELECT * INTO #died_date_ons FROM (
+
+                    SELECT t.* INTO #died_date_ons FROM (
             SELECT Patient_ID as patient_id, CONVERT(VARCHAR(10), dod, 23) AS date_of_death
             FROM ONS_Deaths
             WHERE (1 = 1) AND dod <= '2020-06-01'
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for age
-SELECT * INTO #age FROM (
+
+                    SELECT t.* INTO #age FROM (
             SELECT
               Patient_ID AS patient_id,
               CASE WHEN
@@ -11545,20 +11561,26 @@ SELECT * INTO #age FROM (
               END AS age
             FROM Patient
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for sex
-SELECT * INTO #sex FROM (
+
+                    SELECT t.* INTO #sex FROM (
           SELECT
             Patient_ID AS patient_id,
             Sex as sex
           FROM Patient) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for imd
-SELECT * INTO #imd FROM (
+
+                    SELECT t.* INTO #imd FROM (
             SELECT
               Patient_ID AS patient_id,
               ImdRankRounded AS index_of_multiple_deprivation
@@ -11572,11 +11594,14 @@ SELECT * INTO #imd FROM (
             ) t
             WHERE rownum = 1
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for rural_urban
-SELECT * INTO #rural_urban FROM (
+
+                    SELECT t.* INTO #rural_urban FROM (
             SELECT
               Patient_ID AS patient_id,
               RuralUrbanClassificationCode AS rural_urban_classification
@@ -11590,11 +11615,14 @@ SELECT * INTO #rural_urban FROM (
             ) t
             WHERE rownum = 1
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for geographic_area
-SELECT * INTO #geographic_area FROM (
+
+                    SELECT t.* INTO #geographic_area FROM (
             SELECT
               Patient_ID AS patient_id,
               Organisation.STPCode AS stp_code
@@ -11610,11 +11638,14 @@ SELECT * INTO #geographic_area FROM (
             ON Organisation.Organisation_ID = t.Organisation_ID
             WHERE t.rownum = 1
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for bmi
-SELECT * INTO #bmi FROM (
+
+                    SELECT t.* INTO #bmi FROM (
         SELECT
           patients.Patient_ID AS patient_id,
           ROUND(COALESCE(weight/SQUARE(NULLIF(height, 0)), bmis.BMI), 1) AS BMI,
@@ -11663,11 +11694,14 @@ SELECT * INTO #bmi FROM (
         ON bmis.Patient_ID = patients.Patient_ID AND DATEDIFF(YEAR, patients.DateOfBirth, bmis.ConsultationDate) >= 16
         -- XXX maybe add a "WHERE NULL..." here
         ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for most_recent_smoking_code
-SELECT * INTO #most_recent_smoking_code FROM (
+
+                    SELECT t.* INTO #most_recent_smoking_code FROM (
             SELECT
               Patient_ID AS patient_id,
               category AS category,
@@ -11684,11 +11718,14 @@ SELECT * INTO #most_recent_smoking_code FROM (
             ) t
             WHERE rownum = 1
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for ever_smoked
-SELECT * INTO #ever_smoked FROM (
+
+                    SELECT t.* INTO #ever_smoked FROM (
             SELECT
               Patient_ID AS patient_id,
               1 AS has_event,
@@ -11699,11 +11736,14 @@ SELECT * INTO #ever_smoked FROM (
             WHERE ConsultationDate <= '2020-02-01'
             GROUP BY Patient_ID
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for ethnicity
-SELECT * INTO #ethnicity FROM (
+
+                    SELECT t.* INTO #ethnicity FROM (
             SELECT
               Patient_ID AS patient_id,
               category AS category,
@@ -11720,11 +11760,14 @@ SELECT * INTO #ethnicity FROM (
             ) t
             WHERE rownum = 1
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for chronic_respiratory_disease
-SELECT * INTO #chronic_respiratory_disease FROM (
+
+                    SELECT t.* INTO #chronic_respiratory_disease FROM (
             SELECT
               Patient_ID AS patient_id,
               1 AS has_event,
@@ -11735,11 +11778,14 @@ SELECT * INTO #chronic_respiratory_disease FROM (
             WHERE 1=1
             GROUP BY Patient_ID
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for recent_asthma_code
-SELECT * INTO #recent_asthma_code FROM (
+
+                    SELECT t.* INTO #recent_asthma_code FROM (
             SELECT
               Patient_ID AS patient_id,
               1 AS has_event,
@@ -11750,11 +11796,14 @@ SELECT * INTO #recent_asthma_code FROM (
             WHERE ConsultationDate BETWEEN '2018-02-01' AND '2020-02-01'
             GROUP BY Patient_ID
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for asthma_code_ever
-SELECT * INTO #asthma_code_ever FROM (
+
+                    SELECT t.* INTO #asthma_code_ever FROM (
             SELECT
               Patient_ID AS patient_id,
               1 AS has_event,
@@ -11765,11 +11814,14 @@ SELECT * INTO #asthma_code_ever FROM (
             WHERE 1=1
             GROUP BY Patient_ID
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for copd_code_ever
-SELECT * INTO #copd_code_ever FROM (
+
+                    SELECT t.* INTO #copd_code_ever FROM (
             SELECT
               Patient_ID AS patient_id,
               1 AS has_event,
@@ -11780,11 +11832,14 @@ SELECT * INTO #copd_code_ever FROM (
             WHERE 1=1
             GROUP BY Patient_ID
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for recent_salbutamol_count
-SELECT * INTO #recent_salbutamol_count FROM (
+
+                    SELECT t.* INTO #recent_salbutamol_count FROM (
             SELECT
               Patient_ID AS patient_id,
               COUNT(*) AS count,
@@ -11799,11 +11854,14 @@ SELECT * INTO #recent_salbutamol_count FROM (
             WHERE ConsultationDate BETWEEN '2018-02-01' AND '2020-02-01'
             GROUP BY Patient_ID
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for recent_ics
-SELECT * INTO #recent_ics FROM (
+
+                    SELECT t.* INTO #recent_ics FROM (
             SELECT
               Patient_ID AS patient_id,
               1 AS has_event,
@@ -11818,11 +11876,14 @@ SELECT * INTO #recent_ics FROM (
             WHERE ConsultationDate BETWEEN '2018-02-01' AND '2020-02-01'
             GROUP BY Patient_ID
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for chronic_cardiac_disease
-SELECT * INTO #chronic_cardiac_disease FROM (
+
+                    SELECT t.* INTO #chronic_cardiac_disease FROM (
             SELECT
               Patient_ID AS patient_id,
               1 AS has_event,
@@ -11833,11 +11894,14 @@ SELECT * INTO #chronic_cardiac_disease FROM (
             WHERE 1=1
             GROUP BY Patient_ID
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for diabetes
-SELECT * INTO #diabetes FROM (
+
+                    SELECT t.* INTO #diabetes FROM (
             SELECT
               Patient_ID AS patient_id,
               1 AS has_event,
@@ -11848,11 +11912,14 @@ SELECT * INTO #diabetes FROM (
             WHERE 1=1
             GROUP BY Patient_ID
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for lung_cancer
-SELECT * INTO #lung_cancer FROM (
+
+                    SELECT t.* INTO #lung_cancer FROM (
             SELECT
               Patient_ID AS patient_id,
               1 AS has_event,
@@ -11863,11 +11930,14 @@ SELECT * INTO #lung_cancer FROM (
             WHERE 1=1
             GROUP BY Patient_ID
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for haem_cancer
-SELECT * INTO #haem_cancer FROM (
+
+                    SELECT t.* INTO #haem_cancer FROM (
             SELECT
               Patient_ID AS patient_id,
               1 AS has_event,
@@ -11878,11 +11948,14 @@ SELECT * INTO #haem_cancer FROM (
             WHERE 1=1
             GROUP BY Patient_ID
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for other_cancer
-SELECT * INTO #other_cancer FROM (
+
+                    SELECT t.* INTO #other_cancer FROM (
             SELECT
               Patient_ID AS patient_id,
               1 AS has_event,
@@ -11893,11 +11966,14 @@ SELECT * INTO #other_cancer FROM (
             WHERE 1=1
             GROUP BY Patient_ID
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for bone_marrow_transplant
-SELECT * INTO #bone_marrow_transplant FROM (
+
+                    SELECT t.* INTO #bone_marrow_transplant FROM (
             SELECT
               Patient_ID AS patient_id,
               1 AS has_event,
@@ -11908,11 +11984,14 @@ SELECT * INTO #bone_marrow_transplant FROM (
             WHERE 1=1
             GROUP BY Patient_ID
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for chemo_radio_therapy
-SELECT * INTO #chemo_radio_therapy FROM (
+
+                    SELECT t.* INTO #chemo_radio_therapy FROM (
             SELECT
               Patient_ID AS patient_id,
               1 AS has_event,
@@ -11923,11 +12002,14 @@ SELECT * INTO #chemo_radio_therapy FROM (
             WHERE 1=1
             GROUP BY Patient_ID
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for chronic_liver_disease
-SELECT * INTO #chronic_liver_disease FROM (
+
+                    SELECT t.* INTO #chronic_liver_disease FROM (
             SELECT
               Patient_ID AS patient_id,
               1 AS has_event,
@@ -11938,11 +12020,14 @@ SELECT * INTO #chronic_liver_disease FROM (
             WHERE 1=1
             GROUP BY Patient_ID
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for other_neuro
-SELECT * INTO #other_neuro FROM (
+
+                    SELECT t.* INTO #other_neuro FROM (
             SELECT
               Patient_ID AS patient_id,
               1 AS has_event,
@@ -11953,11 +12038,14 @@ SELECT * INTO #other_neuro FROM (
             WHERE 1=1
             GROUP BY Patient_ID
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for stroke
-SELECT * INTO #stroke FROM (
+
+                    SELECT t.* INTO #stroke FROM (
             SELECT
               Patient_ID AS patient_id,
               1 AS has_event,
@@ -11968,11 +12056,14 @@ SELECT * INTO #stroke FROM (
             WHERE 1=1
             GROUP BY Patient_ID
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for dementia
-SELECT * INTO #dementia FROM (
+
+                    SELECT t.* INTO #dementia FROM (
             SELECT
               Patient_ID AS patient_id,
               1 AS has_event,
@@ -11983,11 +12074,14 @@ SELECT * INTO #dementia FROM (
             WHERE 1=1
             GROUP BY Patient_ID
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for dialysis
-SELECT * INTO #dialysis FROM (
+
+                    SELECT t.* INTO #dialysis FROM (
             SELECT
               Patient_ID AS patient_id,
               1 AS has_event,
@@ -11998,11 +12092,14 @@ SELECT * INTO #dialysis FROM (
             WHERE 1=1
             GROUP BY Patient_ID
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for organ_transplant
-SELECT * INTO #organ_transplant FROM (
+
+                    SELECT t.* INTO #organ_transplant FROM (
             SELECT
               Patient_ID AS patient_id,
               1 AS has_event,
@@ -12013,11 +12110,14 @@ SELECT * INTO #organ_transplant FROM (
             WHERE 1=1
             GROUP BY Patient_ID
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for dysplenia
-SELECT * INTO #dysplenia FROM (
+
+                    SELECT t.* INTO #dysplenia FROM (
             SELECT
               Patient_ID AS patient_id,
               1 AS has_event,
@@ -12028,11 +12128,14 @@ SELECT * INTO #dysplenia FROM (
             WHERE 1=1
             GROUP BY Patient_ID
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for sickle_cell
-SELECT * INTO #sickle_cell FROM (
+
+                    SELECT t.* INTO #sickle_cell FROM (
             SELECT
               Patient_ID AS patient_id,
               1 AS has_event,
@@ -12043,11 +12146,14 @@ SELECT * INTO #sickle_cell FROM (
             WHERE 1=1
             GROUP BY Patient_ID
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for aplastic_anaemia
-SELECT * INTO #aplastic_anaemia FROM (
+
+                    SELECT t.* INTO #aplastic_anaemia FROM (
             SELECT
               Patient_ID AS patient_id,
               1 AS has_event,
@@ -12058,11 +12164,14 @@ SELECT * INTO #aplastic_anaemia FROM (
             WHERE 1=1
             GROUP BY Patient_ID
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for hiv
-SELECT * INTO #hiv FROM (
+
+                    SELECT t.* INTO #hiv FROM (
             SELECT
               Patient_ID AS patient_id,
               1 AS has_event,
@@ -12073,11 +12182,14 @@ SELECT * INTO #hiv FROM (
             WHERE 1=1
             GROUP BY Patient_ID
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for genetic_immunodeficiency
-SELECT * INTO #genetic_immunodeficiency FROM (
+
+                    SELECT t.* INTO #genetic_immunodeficiency FROM (
             SELECT
               Patient_ID AS patient_id,
               1 AS has_event,
@@ -12088,11 +12200,14 @@ SELECT * INTO #genetic_immunodeficiency FROM (
             WHERE 1=1
             GROUP BY Patient_ID
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for immunosuppression_nos
-SELECT * INTO #immunosuppression_nos FROM (
+
+                    SELECT t.* INTO #immunosuppression_nos FROM (
             SELECT
               Patient_ID AS patient_id,
               1 AS has_event,
@@ -12103,11 +12218,14 @@ SELECT * INTO #immunosuppression_nos FROM (
             WHERE 1=1
             GROUP BY Patient_ID
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for bp_sys
-SELECT * INTO #bp_sys FROM (
+
+                    SELECT t.* INTO #bp_sys FROM (
         SELECT
           days.Patient_ID AS patient_id,
           AVG(CodedEvent.NumericValue) AS mean_value,
@@ -12126,11 +12244,14 @@ SELECT * INTO #bp_sys FROM (
         )
         GROUP BY days.Patient_ID, days.date_measured
         ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for bp_dias
-SELECT * INTO #bp_dias FROM (
+
+                    SELECT t.* INTO #bp_dias FROM (
         SELECT
           days.Patient_ID AS patient_id,
           AVG(CodedEvent.NumericValue) AS mean_value,
@@ -12149,11 +12270,14 @@ SELECT * INTO #bp_dias FROM (
         )
         GROUP BY days.Patient_ID, days.date_measured
         ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for ra_sle_psoriasis
-SELECT * INTO #ra_sle_psoriasis FROM (
+
+                    SELECT t.* INTO #ra_sle_psoriasis FROM (
             SELECT
               Patient_ID AS patient_id,
               1 AS has_event,
@@ -12164,11 +12288,14 @@ SELECT * INTO #ra_sle_psoriasis FROM (
             WHERE 1=1
             GROUP BY Patient_ID
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for gi_bleed_and_ulcer
-SELECT * INTO #gi_bleed_and_ulcer FROM (
+
+                    SELECT t.* INTO #gi_bleed_and_ulcer FROM (
             SELECT
               Patient_ID AS patient_id,
               1 AS has_event,
@@ -12179,11 +12306,14 @@ SELECT * INTO #gi_bleed_and_ulcer FROM (
             WHERE 1=1
             GROUP BY Patient_ID
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
 -- Query for inflammatory_bowel_disease
-SELECT * INTO #inflammatory_bowel_disease FROM (
+
+                    SELECT t.* INTO #inflammatory_bowel_disease FROM (
             SELECT
               Patient_ID AS patient_id,
               1 AS has_event,
@@ -12194,6 +12324,8 @@ SELECT * INTO #inflammatory_bowel_disease FROM (
             WHERE 1=1
             GROUP BY Patient_ID
             ) t
+                    INNER JOIN #population ON #population.patient_id = t.patient_id
+                    
 
 
 
