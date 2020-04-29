@@ -1,50 +1,119 @@
-﻿22K..,Body mass index - observation,30.0438287864317,144753936
-XE2eD,Serum cholesterol level,4.64812463512529,74768995
-44P5.,Serum HDL cholesterol level,1.4034793040527,31194970
-XaEUq,Serum cholesterol/HDL ratio,3.85680145942826,26800245
-229..,O/E - height,1.6802424370574,23118312
-44PF.,Total cholesterol:HDL ratio,4.03201678694563,12351495
-XM0lt,Serum urea level,6.23886843667041,11469578
-XE2n3,Urine albumin/creatinine ratio,5.18272168393025,11347300
-XaELV,Serum TSH level,2.71885250373801,10375834
-XaERr,Serum free T4 level,14.7129069130969,4869856
-44P6.,Serum LDL cholesterol level,2.56805075901662,4857685
-XaJe9,Serum total cholesterol level,4.60262149297948,4518304
-Ub1tI,Cigarette consumption,13.4675107059521,4397552
-X772q,Haemoglobin A1c level,7.76080979094121,4038202
-XE2eI,Urine albumin level,9.45594340202062,4012574
-XaERp,HbA1c level (DCCT aligned),7.70620717871496,3682282
-XaQVY,QRISK2 cardiovascular disease 10 year risk score,17.8315913383619,3455085
-XaPbt,Haemoglobin A1c level - IFCC standardised,34.5987885665029,2694027
-44g1.,Plasma fasting glucose level,7.43107719816512,2591600
-XM0ly,Plasma glucose level,8.52818431832053,2384256
-136..,Alcohol intake,10.1831408010858,1788360
-XE2bw,Urine microalbumin level,9.79834887834658,1665115
-XaEMS,Urine protein/creatinine ratio,11.3199345812678,1188136
-XaK8y,GFR calculated abbreviated MDRD,30.6716934758311,1001152
-X772z,Blood glucose level,8.91833780235702,781925
-XaLDN,Patient health questionnaire (PHQ-9) score,13.4881025197869,704703
-XaPBq,QRISK cardiovascular disease 10 year risk score,17.2206642593927,647121
-XaIRd,Plasma total cholesterol level,4.59036491773659,628908
-XaEUr,Plasma cholesterol/HDL ratio,3.98235635352733,618590
-XaFsZ,Framingham coronary heart disease 10 year risk score,13.9638035634711,519914
-44f..,Serum glucose level,8.39561627964716,508683
-XE2wy,Thyroid stimulating hormone level,3.06273313077371,428398
-X77Qu,Forced expired volume in 1 second,1.99171068398585,405606
-XaEVr,Plasma HDL cholesterol level,1.38463942478305,400095
-XaELW,Plasma TSH level,2.67940656683812,280844
-XaDvl,Plasma urea level,5.76720673162312,280195
-XE2mq,Fasting blood glucose level,7.68024257818901,278394
-XaERq,Serum free triiodothyronine level,5.24789072699565,259938
-44f1.,Serum fasting glucose level,7.5538648738157,245439
-Ub173,Alcohol units per week,10.042958979382,237173
-XaORP,Alcohol use disorder identificatn test consumptn questionnre,4.27838351560463,236611
-XaERs,Plasma free T4 level,13.663790644527,212460
-XabrL,Random urine protein:creatinine ratio,13.5170147600787,187182
-XaFs9,Fasting cholesterol level,5.52319058174678,164402
-4427.,Free thyroxine level,15.0433845706691,149944
-XaEVs,Plasma LDL cholesterol level,2.72007746925684,134889
-XaY6i,"CHA2DS2 - vascular disease, age, sex category score",4.19175060098255,131452
-XaQaG,Framingham [(CVDand/orCHD)(and/or score)(and/or calculator)],18.1955583146655,120878
-XE2q5,Serum creatinine level,33.3437639610075,120747
-22A..,O/E - weight,22.1580604517138,110116
+﻿ctv3code,description,avg_value,count
+22K..,Body mass index - observation,30.0256113864567,411067992
+XE2eD,Serum cholesterol level,4.79031554270368,203098357
+XaEUq,Serum cholesterol/HDL ratio,4.37727333239177,49301810
+XM0lt,Serum urea level,6.37248025379683,31890502
+44PF.,Total cholesterol:HDL ratio,4.42654323347367,28893500
+XaPbt,Haemoglobin A1c level - IFCC standardised,36.2027990150205,14018074
+XE2n3,Urine albumin/creatinine ratio,9.14848962097635,12309880
+X772q,Haemoglobin A1c level,7.5096481274069,12027086
+XaJe9,Serum total cholesterol level,4.72832129698713,11097842
+XaERp,HbA1c level (DCCT aligned),7.44102976161183,10912459
+44g1.,Plasma fasting glucose level,6.60272113143679,7787618
+XaELV,Serum TSH level,4.99844786067326,7760674
+XE2eI,Urine albumin level,10.7507156391526,6962304
+Ub1tI,Cigarette consumption,12.4964194013264,6648944
+XM0ly,Plasma glucose level,7.28000293434131,6602670
+XaQVY,QRISK2 cardiovascular disease 10 year risk score,19.1955284284006,6598620
+XaK8y,GFR calculated abbreviated MDRD,32.011732360816,4772464
+44P6.,Serum LDL cholesterol level,3.83483853657769,4168605
+XaERr,Serum free T4 level,14.024001763283,3910426
+XE2bw,Urine microalbumin level,10.8955241748551,3099216
+136..,Alcohol intake,12.0289335965053,2874140
+XaEMS,Urine protein/creatinine ratio,11.1696331247722,2668672
+X772z,Blood glucose level,7.68217005408181,2158768
+XaIRd,Plasma total cholesterol level,4.71554447446104,1845756
+44f..,Serum glucose level,7.19594282072979,1420077
+XaEUr,Plasma cholesterol/HDL ratio,4.41297115218476,1397290
+XaPBq,QRISK cardiovascular disease 10 year risk score,19.728670905079,1153461
+XaLDN,Patient health questionnaire (PHQ-9) score,13.1889449487474,946191
+XaFsZ,Framingham coronary heart disease 10 year risk score,14.7143587664358,882843
+XaDvl,Plasma urea level,6.06498078426356,777725
+XE2mq,Fasting blood glucose level,6.9746523211971,770519
+XaERq,Serum free triiodothyronine level,5.13714370178007,770270
+44f1.,Serum fasting glucose level,6.79580824423566,679751
+246A.,O/E - Diastolic BP reading,36.8249727722962,651910
+XaFs9,Fasting cholesterol level,5.5627787623295,573699
+XE2q5,Serum creatinine level,34.8636041304393,430488
+XE2wy,Thyroid stimulating hormone level,5.71535175377955,400986
+22A..,O/E - weight,28.8550268840373,345936
+Ub173,Alcohol units per week,11.7238349846296,339944
+XaORP,Alcohol use disorder identificatn test consumptn questionnre,5.56955667666904,329642
+XSFyN,Glomerular filtration rate,31.5677417504803,322820
+44P5.,Serum HDL cholesterol level,4.53027642118208,298210
+XabrL,Random urine protein:creatinine ratio,13.4064736065464,297714
+XaY6i,"CHA2DS2 - vascular disease, age, sex category score",5.14804368778767,287403
+XSK14,Total cholesterol measurement,4.90500739558456,270954
+XaERs,Plasma free T4 level,12.2248080683158,259942
+XaQaG,Framingham [(CVDand/orCHD)(and/or score)(and/or calculator)],20.5812091064759,225034
+XaELW,Plasma TSH level,5.01670155434148,208728
+XaOgr,WHO FRAX 10 year osteoporotic fracture probability score,12.5319646232134,156022
+4427.,Free thyroxine level,15.4491457734153,140682
+137H.,Pipe smoker,7.67056229877438,133456
+XaEVs,Plasma LDL cholesterol level,3.85143980794074,130906
+XaEOV,120 minute plasma glucose level,8.53681312254346,121062
+XaIuQ,Cigarette pack-years,25.3038843130909,110712
+XaJLG,Six item cognitive impairment test,8.04180039516168,103755
+Ub1tJ,Cigar consumption,7.56358555805725,99488
+XaOgD,WHO FRAX 10 year hip fracture probability score,7.79544066821238,95100
+XM0aD,Alcohol use disorders identification test,7.63377635933265,84600
+X77Qu,Forced expired volume in 1 second,4.0463847643879,84376
+XaMwb,Alcohol screen - AUDIT C completed,5.48017371269346,83120
+X772L,Cholesterol level,4.70182312658347,82128
+XaQik,Canadian Study of Health and Aging clinical frailty scale,5.47363791146425,70480
+XaP9J,"Cong heart fail, hypertens, age, diab, stroke 2 risk score",4.54563830321394,62533
+XaIwf,HAD scale: depression score,8.31391600682141,59862
+4425.,Free triiodothyronine level,5.40509530377014,55926
+X77Wg,Thyroid function test,6.11339697361777,49822
+XaERo,HbA1 level (DCCT aligned),7.69151757486887,46614
+137K.,Stopped smoking,16.8598885887077,44044
+XaNkT,Generalised anxiety disorder 7 item score,9.92287530875928,43724
+XaJX2,Minutes from waking to first tobacco consumption,13.2613766730402,41840
+XaX3v,GP assessment of cognition patient examination,7.38433817848175,41416
+XaJx9,Mini mental state score,21.9934759698855,40803
+XaQJP,General practitioner assessment of cognition tool,5.5712137274722,40561
+2469.,O/E - Systolic BP reading,28.9599441806597,39413
+XaEFy,FEV1/FVC percent,34.5547221044796,34783
+Xa041,Waist circumference,34.9001228547191,28001
+XaLux,Serum fasting total cholesterol,5.13034135695359,27420
+XaIz7,Urine protein/creatinine index,17.460499388285,24390
+4424.,Serum T3 level,5.45771648690211,24358
+Ub172,alcohol units/day,9.80400720918861,23621
+XaIwe,HAD scale: anxiety score,8.53125289808031,21566
+XaJ9S,Framingham coronary heart disease 10 yr adjusted risk score,19.9767001326601,19867
+XaMwZ,Alcohol screen - AUDIT completed,7.19487127815003,19849
+XaZcl,Baseline body mass index,29.9623397030593,19575
+4426.,Serum T4 level,16.6912202261112,19116
+XaENB,120 minute blood glucose level,8.38265157911341,18555
+XaWP9,HbA1c target level - IFCC standardised,24.1669237100462,18285
+Ub1tK,Pipe tobacco consumption,10.2922936386025,17544
+XaItl,Percentage of best ever peak expiratory flow rate,32.824177754255,16776
+XaIxR,FEV1 after bronchodilation,3.76841965766054,16592
+22K5.,Body mass index 30+ - obesity,32.5653841041768,16520
+XaEOZ,120 minute serum glucose level,8.68978098482284,16026
+XaERt,Plasma free triiodothyronine level,5.41174779820888,14544
+X773s,Pulse rate,32.7770894944548,14403
+Xaeze,HbA1c level (monitoring ranges) - IFCC standardised,34.1290350108957,14052
+X77Ra,Forced expired volume in one sec/forced vital capacity ratio,33.6462444649859,13603
+XaX3w,GP assessment of cognition informant interview,5.26944403371285,13526
+XaNO9,FAST - Fast Alcohol Screening Test,6.56350467984663,13462
+XaIr7,Smoking free weeks,7.05072126570498,12894
+XaMDA,GFR calculated abbreviated MDRD adj for African Americ orign,31.6169456174574,10444
+XaYWb,WHO FRAX 10 yr osteoporotic fracture probablty scor with BMD,11.6331833068522,10070
+Ub1tv,Spirits intake,11.9883550146874,9532
+XaETQ,Plasma creatinine level,35.7215530636292,9272
+XaJxS,Joint British Societies cardiac risk score,21.7112390177464,9154
+229..,O/E - height,6.4685110380738,9141
+XaIxQ,FEV1 before bronchodilation,3.8881395391666,9094
+XM0cp,Dundee Coronary Risk Disk,6.53980998018858,8420
+XaIwk,Standing diastolic blood pressure,34.1487864012857,8240
+XE2eE,Serum fructosamine level,6.12282536884229,8229
+X772A,Triiodothyronine level,5.7381184760373,7580
+XaBLm,Haemoglobin A1 level,14.9012875633855,7223
+XaK28,Carbon monoxide reading at 4 weeks,9.54102459012485,6832
+XaYWc,WHO FRAX 10 year hip fracture probability score with BMD,7.37247076948582,6448
+XaERR,Cholesterol/HDL ratio,4.8208897661975,6350
+44U7.,2 hour post-prandial blood glucose level,9.86629157888223,5796
+Xaezd,HbA1c level (diagnostic reference range) - IFCC standardised,36.3317117104659,5550
+XaEVr,Plasma HDL cholesterol level,4.3254064583035,5388
+XaIL1,Recorded/predicted peak expiratory flow rate ratio,32.9590338166874,5382
